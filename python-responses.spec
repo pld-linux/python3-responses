@@ -11,7 +11,7 @@ Summary:	A utility for mocking out the Python Requests library
 Summary(pl.UTF-8):	Narzędzie do podstawiania atrap biblioteki Python Requests
 Name:		python-%{pypi_name}
 Version:	0.12.1
-Release:	1
+Release:	2
 License:	Apache v2.0
 #Source0Download: https://github.com/getsentry/responses/releases
 Source0:	https://github.com/getsentry/responses/archive/%{version}/%{pypi_name}-%{version}.tar.gz
