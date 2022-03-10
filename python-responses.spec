@@ -5,19 +5,18 @@
 %bcond_without	python3 # CPython 3.x module
 
 %define		module		responses
-%define		egg_name	responses
-%define		pypi_name	responses
 Summary:	A utility for mocking out the Python Requests library
 Summary(pl.UTF-8):	Narzędzie do podstawiania atrap biblioteki Python Requests
-Name:		python-%{pypi_name}
-Version:	0.12.1
-Release:	2
+Name:		python-%{module}
+# keep 0.17.x here for python2 support
+Version:	0.17.0
+Release:	1
 License:	Apache v2.0
-#Source0Download: https://github.com/getsentry/responses/releases
-Source0:	https://github.com/getsentry/responses/archive/%{version}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	afbac75fad56fe130f7915ce6feff0db
-Patch0:		%{name}-py2.patch
 Group:		Libraries/Python
+#Source0Download: https://github.com/getsentry/responses/releases
+Source0:	https://github.com/getsentry/responses/archive/%{version}/%{module}-%{version}.tar.gz
+# Source0-md5:	7b94ef2851112c11c3bf75455e4ebeff
+Patch0:		%{name}-py2.patch
 URL:		https://github.com/getsentry/responses
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -63,20 +62,20 @@ A utility library for mocking out the requests Python library.
 Biblioteka narzędziowa do podstawiania atrap biblioteki Pythona
 requests.
 
-%package -n python3-%{pypi_name}
+%package -n python3-%{module}
 Summary:	A utility for mocking out the Python Requests library
 Summary(pl.UTF-8):	Narzędzie do podstawiania atrap biblioteki Python Requests
 Group:		Libraries/Python
 
-%description -n python3-%{pypi_name}
+%description -n python3-%{module}
 A utility library for mocking out the requests Python library.
 
-%description -n python3-%{pypi_name} -l pl.UTF-8
+%description -n python3-%{module} -l pl.UTF-8
 Biblioteka narzędziowa do podstawiania atrap biblioteki Pythona
 requests.
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -q -n %{module}-%{version}
 %patch0 -p1
 
 %build
@@ -86,7 +85,7 @@ requests.
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 PYTEST_PLUGINS="pytest_localserver.plugin" \
-%{__python} -m pytest test_responses.py
+%{__python} -m pytest responses
 %endif
 %endif
 
@@ -96,7 +95,7 @@ PYTEST_PLUGINS="pytest_localserver.plugin" \
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 PYTEST_PLUGINS="pytest_localserver.plugin" \
-%{__python3} -m pytest test_responses.py
+%{__python3} -m pytest responses
 %endif
 %endif
 
@@ -120,15 +119,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES README.rst
-%{py_sitescriptdir}/responses.py[co]
-%{py_sitescriptdir}/%{egg_name}-%{version}-py*.egg-info
+%{py_sitescriptdir}/responses
+%{py_sitescriptdir}/responses-%{version}-py*.egg-info
 %endif
 
 %if %{with python3}
-%files -n python3-%{pypi_name}
+%files -n python3-%{module}
 %defattr(644,root,root,755)
 %doc CHANGES README.rst
-%{py3_sitescriptdir}/responses.py
-%{py3_sitescriptdir}/__pycache__/responses.cpython-*.pyc
-%{py3_sitescriptdir}/%{egg_name}-%{version}-py*.egg-info
+%{py3_sitescriptdir}/responses
+%{py3_sitescriptdir}/responses-%{version}-py*.egg-info
 %endif
