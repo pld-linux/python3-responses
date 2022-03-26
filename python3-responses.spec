@@ -7,7 +7,7 @@ Summary:	A utility for mocking out the Python Requests library
 Summary(pl.UTF-8):	Narzędzie do podstawiania atrap biblioteki Python Requests
 Name:		python3-%{module}
 Version:	0.19.0
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/getsentry/responses/releases
