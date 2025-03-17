@@ -6,13 +6,13 @@
 Summary:	A utility for mocking out the Python Requests library
 Summary(pl.UTF-8):	Narzędzie do podstawiania atrap biblioteki Python Requests
 Name:		python3-%{module}
-Version:	0.22.0
-Release:	3
+Version:	0.25.7
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/getsentry/responses/releases
 Source0:	https://github.com/getsentry/responses/archive/%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	87376da806d05a4de46e9b6a868d7ece
+# Source0-md5:	de861608866c3cf09865919c3b64737d
 URL:		https://github.com/getsentry/responses
 BuildRequires:	python3-modules >= 1:3.7
 BuildRequires:	python3-setuptools
@@ -60,8 +60,6 @@ PYTEST_PLUGINS="pytest_asyncio.plugin,pytest_httpserver.pytest_plugin" \
 rm -rf $RPM_BUILD_ROOT
 
 %py3_install
-
-%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/responses/tests
 
 %clean
 rm -rf $RPM_BUILD_ROOT
