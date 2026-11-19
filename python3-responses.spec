@@ -6,13 +6,13 @@
 Summary:	A utility for mocking out the Python Requests library
 Summary(pl.UTF-8):	Narzędzie do podstawiania atrap biblioteki Python Requests
 Name:		python3-%{module}
-Version:	0.25.7
+Version:	0.26.3
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/getsentry/responses/releases
 Source0:	https://github.com/getsentry/responses/archive/%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	de861608866c3cf09865919c3b64737d
+# Source0-md5:	2a79df23fe542a81b519bae7fa6b1a32
 URL:		https://github.com/getsentry/responses
 BuildRequires:	python3-modules >= 1:3.7
 BuildRequires:	python3-setuptools
